@@ -7,6 +7,7 @@
     <title>GSoC</title>
     <meta name="description" content="GSoC final report">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Pico.css -->
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
 
@@ -152,7 +153,7 @@
                             The main idea is that the players vote for a specific movement. The most voted movement will be the one that
                             all the players will play against the satellite.
                             <br /><br />
-                            To achieve this we must have setted a communication protocol so we can exchange data with the satellite.
+                            To achieve this we must have set a communication protocol so we can exchange data with the satellite.
                             <br />
                             Firstly, you must understand the structure of the project.
                             <br/><br/>
@@ -168,18 +169,20 @@
                             The basic workflow is the following:<br/><br/>
 
                             - First Case:<br/>
-                            • The satellite send the chessboard status to the ground station + it's vote.<br/>
+                            • The satellite sends the chessboard status to the ground station + its vote.<br/>
                             • The cloud function fetch the packet from the ground station 
-                                update the controller's database with the packet content.<br/>
+                                and update the controller's database with the packet content.<br/>
                             <br/>
                             - Second Case:<br/>
-                            • The cloud functions get the most voted move, create the package and send it to the ground station<br/>
-                            • The ground station send the package to the satellite.<br/>
-                            • The satellite process the package and updates it's chess engine with the earth move<br/>
+                            • The cloud functions get the most voted move, create the package, and send it to the ground station<br/>
+                            • The ground station sends the package to the satellite.<br/>
+                            • The satellite process the package and updates its chess engine with the Earth move<br/>
+                        </p>
 
                             <img style="margin: 1rem;" src="./Images/workflow.png" alt="workflow">
-
-
+                        <p>
+                            LG Space chess also has two more game modes,
+                            Local Play where the user can play against the local machine, and a “Top Plays” mode where the user can reproduce chess master's plays.
                         </p>
                     </hgroup>
                     
@@ -256,14 +259,11 @@
                 
                 </article>
 
-                <!-- <hgroup> -->
-
+            
                 <h3>Full Project Documentation</h3>
                 <button class="contrast" id="btn-doc">Show</button>
-                <object id="doc" style="display: none;" data="docs.pdf" type="application/pdf" width="100%"
+                <object id="doc" style="display: none;" data="https://lg-space-chess-pwa.vercel.app/Documentation.pdf" type="application/pdf" width="100%"
                     height="100%"></object>
-
-                <!-- </hgroup> -->
 
                 <article>
                     <details close>
@@ -508,59 +508,38 @@ function init() {
                             Google summer of code is a great opportunity to contribute to the open source community.
                             I am so grateful to have had the chance to develop the first chess in the world that uses
                             satellite communications.
+                            <br/><br/>
 
-                            ADD LINKED IN and GITHUB
+                            <a target="_blank" href="https://www.linkedin.com/in/pablosanchidrian/">
+                                <inline>
+                                    <i class="fa-brands fa-linkedin-in"></i> Pablo Sanchidrian
+                                </inline>
+                            </a>
+
+                            <br/>
+                            <a target="_blank" href="https://github.com/PabloSanchi">
+                                <inline>
+                                    <i class="fa-brands fa-github"></i> PabloSanchi
+                                </inline>
+                            </a>
+
+                            <br/>
+                            <a href="mailto:pablo.sanchi.herrera@gmail.com">
+                                <inline>
+                                    <i class="fa fa-envelope" aria-hidden="true"></i> pablo.sanchi.herrera@gmail.com
+                                </inline>
+                            </a>
+                            
                         </p>
                     </hgroup>
                 </article>
 
 
-                <!-- A button of show documentation works fine -->
-                <!-- <section style="width:100%; height:100%;">
-                    <details open style="width:100%; height:100%;">
-                        <summary>
-                            <h3>Full Project Documentation</h3>
-                        </summary>
-
-                        <object data="docs.pdf" type="application/pdf" width="100%" height="100%"></object>
-                    </details>
-                </section> -->
-
             </section>
-
-
-
-            <!-- <aside>
-                <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
-                        src="https://source.unsplash.com/T5nXYXCf50I/1500x750" alt="Architecture"></a>
-                <p>
-                    <a href="#" onclick="event.preventDefault()">Donec sit amet</a><br>
-                    <small>Class aptent taciti sociosqu ad litora torquent per conubia nostra</small>
-                </p>
-                <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
-                        src="https://source.unsplash.com/tb4heMa-ZRo/1500x750" alt="Architecture"></a>
-                <p>
-                    <a href="#" onclick="event.preventDefault()">Suspendisse potenti</a><br>
-                    <small>Proin non condimentum tortor. Donec in feugiat sapien.</small>
-                </p>
-                <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
-                        src="https://source.unsplash.com/Ru3Ap8TNcsk/1500x750" alt="Architecture"></a>
-                <p>
-                    <a href="#" onclick="event.preventDefault()">Nullam lobortis placerat aliquam</a><br>
-                    <small>Maecenas vitae nibh blandit dolor commodo egestas vel eget neque. Praesent semper justo orci,
-                        vel imperdiet mi auctor in.</small>
-                </p>
-            </aside> -->
 
         </div>
     </main>
     <!-- ./ Main -->
-
-    <!-- Footer -->
-    <!-- <footer class="container-fluid">
-        <small>Pablo Sanchidrian Google Summer of Code 2022</small>
-    </footer> -->
-    <!-- ./ Footer -->
 
     <!-- Minimal theme switcher -->
     <script src="minimal-theme-switcher.js"></script>
