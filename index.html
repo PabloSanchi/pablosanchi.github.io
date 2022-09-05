@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GSoC</title>
+    <title>GSoC'22 Report</title>
     <meta name="description" content="GSoC final report">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -445,7 +445,55 @@ var io = new Server(http, {
                             width — width of the screen/canvas<br/>
                             height — height of the screen/canvas<br/>
 
-                            <br/><br/>
+                            <br/>
+
+                            <h5>Start event (Screens)</h5>
+                            <p>
+                                The server tells the screen to set up their variables using the data they just have been provided (data explained above).
+                                They calculate its corresponding X-axis offset using the following code:
+                            </p>
+                            <br/>
+                            
+                            <pre>
+socket.on("start", (superRes) => {
+    
+    
+    // super resolution width and height
+    fullWidth = superRes.width;
+    fullHeight = window.innerHeight;
+    
+    // calculate each screen startX
+    let scRes = superRes.child;
+    
+    let keys = Object.keys(scRes);
+    let arr = keys.map(Number).filter((e) => e % 2 != 0);
+    
+    startX = 0;
+    
+    if (screen % 2 != 0) {
+        if (Math.max(...arr) == screen) {
+            startX = 0;
+        } else {
+            for (let index = Math.max(...arr); index > screen; index -= 2) {
+                startX += scRes[index];
+            }
+        }
+    } else {
+        for (let index = Math.max(...arr); index >= 1; index -= 2) {
+            startX += scRes[index];
+        }
+        
+        for (let index = 2; index < screen; index += 2) {
+            startX += scRes[index];
+        }
+    }
+    
+    init();
+    animate();
+});
+                            </pre>
+
+                            <br/>
                             <h5>Data division function</h5>
                             <pre>                         
 function View( canvas, fullWidth, fullHeight, viewX, viewY, viewWidth, viewHeight ) {
