@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSoC</title>
+    <meta name="description" content="GSoC final report">
+
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+
+    <style>
+        /* :root {
+            --primary: #5e35b1;
+        }
+        */
+        #btn-doc {
+            margin-bottom: 2rem;
+        }
+
+        /* Scrollbar design */
+        *::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: #546e7a;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background-color: black;
+            border-radius: 20px;
+            border: 3px solid #546e7a;
+        }
+
+        /* ---------------- */
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Nav -->
+    <nav class="container-fluid">
+        <ul>
+            <li>
+                <a href="/" class="contrast" onclick="event.preventDefault()">
+                    <strong>Pablo Sanchidrian GSoC Final Review</strong>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <details role="list" dir="rtl">
+                    <summary aria-haspopup="listbox" role="link" class="secondary">Theme</summary>
+                    <ul role="listbox">
+                        <li><a href="#" data-theme-switcher="light">Light</a></li>
+                        <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+                        <!-- <li><a href="#" data-theme-switcher="auto">Auto</a></li> -->
+                    </ul>
+                </details>
+            </li>
+
+            <li><a href="mailto:pablo.sanchi.herrera@gmail.com"><span style="white-space: nowrap;">Mail me</span></a></li>
+        </ul>
+    </nav>
+    <!-- ./ Nav -->
+
+    <!-- Main -->
+    <main class="container">
+        <div class="grid">
+
+            <section>
+                
+                <hgroup>
+                    <h1>GSoC '22 Report </h1>
+                    <h2>Liquid Galaxy Space Chess</h2>
+                </hgroup>
+
+                <article>
+                
+                    <hgroup>
+                        <h3>Mentors</h3>
+                        <h4>Víctor Sánchez & Andreu Ibañez</h4>
+                    </hgroup>
+
+                    <hgroup>
+                        <h3>Intro</h3>
+                        <p>
+                            The Google summer of code program has been the greatest experience for me over the summer,
+                            during which I developed the <strong>first chess in the world</strong> that uses satellite
+                            communications.
+                            <br />
+                            The project idea was to create a space-related visualization project in collaboration with
+                            Hydra-Space & Hybridium.
+                            The target is to use the Liquid Galaxy cluster to visualize a world chess game that will happen
+                            with people worldwide and through satellite communications.
+                        </p>
+                    </hgroup>
+
+                    <hgroup>
+                        <h3>What is Liquid Galaxy?</h3>
+                        <p>
+                            Liquid Galaxy is an open-source project founded by Google.<br />
+                            Liquid Galaxy started out as a panoramic multi-display Google Earth viewer
+                            but has evolved to become a general data visualization tool for operations, marketing, and
+                            research.<br /><br />
+                            The Liquid Galaxy gives the ability to fly around Google Earth, view panoramic video and photos,
+                            develop interactive tours, and graphically display geographic information data, but also nice
+                            visualizations multipurpose
+
+                        </p>
+                    </hgroup>
+                
+                    <hgroup>
+                        <h3>What is Hydra-Space?</h3>
+                        <p>
+                            Hydra Space is an engineering company based in Madrid, 
+                            Spain dedicated to satellite IoT communications with full inhouse technology,
+                            including satellites and ground-segment.
+                            Hydra Space is a member of Madrid Innovation and New Space Cluster (MINSC)
+                        </p>
+                    </hgroup>
+
+                    <hgroup>
+                        <h3>What is Hybridium?</h3>
+                        <p>
+                            Hybridium provide all-in-one hybrid auditorium and event technology designed to overcome
+                            all kinds of challenges to deliver the most impactful events.
+                            <br/><br/>
+                            Large scale video and hologram wall,
+                            uniting participants for exceptionally immersive and engaging hybrid collaboration,
+                            training and events.
+                            <br/><br/>
+                            Hybridium makes hybrid and distance learning a truly immersive,
+                            collaborative and engaging experience, enabling organizations to extend their geographical reach.
+                            Frictionless real-time high-quality video, 
+                            chat and content sharing allows students to participate as if they are in the classroom.
+                        </p>
+                    </hgroup>
+                    
+                    <hgroup>
+                        <h3>LG Space Chess</h3>
+                        <p>
+                            LG Space chess is the newest way of playing chess.<br/>
+                            Remote chess is played in various forms,
+                            traditionally through the postal system or its updated version (email), less common methods are fax, homing pigeon, and phone.
+                            Today it is usually played throughout a dedicated server.
+                            Now, Liquid Galaxy has created the first chess in the world capable of playing against a satellite.
+                            <br /><br />
+                            The main idea is that the players vote for a specific movement. The most voted movement will be the one that
+                            all the players will play against the satellite.
+                            <br /><br />
+                            To achieve this we must have setted a communication protocol so we can exchange data with the satellite.
+                            <br />
+                            Firstly, you must understand the structure of the project.
+                            <br/><br/>
+                            
+                            • Satellite with a chess engine<br/>
+                            • Ground station that communicates with the satellite<br/>
+                            • Cloud function that communicates with the ground station<br/>
+                            • Web controller that communicates with the screens<br/>
+                            • Screen visualization<br/>
+                            
+                            <br/>
+
+                            The basic workflow is the following:<br/><br/>
+
+                            - First Case:<br/>
+                            • The satellite send the chessboard status to the ground station + it's vote.<br/>
+                            • The cloud function fetch the packet from the ground station 
+                                update the controller's database with the packet content.<br/>
+                            <br/>
+                            - Second Case:<br/>
+                            • The cloud functions get the most voted move, create the package and send it to the ground station<br/>
+                            • The ground station send the package to the satellite.<br/>
+                            • The satellite process the package and updates it's chess engine with the earth move<br/>
+
+                            <img style="margin: 1rem;" src="./Images/workflow.png" alt="workflow">
+
+
+                        </p>
+                    </hgroup>
+                    
+                    <hgroup>
+                        <!-- <h3>Project Goals</h3> -->
+                        <details open>
+                            <summary>
+                                <h3>Project Goals</h3>
+                            </summary>
+                            <ul>
+                                <li>Cloud Functions <span style="color: green;">[DONE]</span>
+                                    <ul>
+                                        <li>Connection with the ground station, SFTP - 
+                                            <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L148-L166">Example Code</a>
+                                        </li>
+                                        <li>Create "sendStatus" function - 
+                                            <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L28-L31">Code</a>
+                                        </li>
+                                        <li>Create player's move packet - 
+                                            <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L271-L296">Code</a>
+                                        </li>
+                                        <li>Create "getStatus" function - 
+                                            <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L174-L213">Code</a>
+                                        </li>
+                                        <li>Create binary to FEN converter function - 
+                                           <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L302-L334">Code</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>Controller <span style="color: green;">[DONE]</span>
+                                    <ul>
+                                        <li>Firebase Auth -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/firebase.js#L34-L54">Code</a>
+                                        </li>
+                                        <li>Voting system -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L630-L659">Code</a>
+                                        </li>
+                                        <li>"Satellite" game-mode -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L565-L664">Code</a>
+                                        </li>
+                                        <li>"Local Play" game-mode -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L428-L563">Code</a>
+                                        </li>
+                                        <li>"Top play" reproducer -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L237-L363">Code</a>
+                                        </li>
+                                        <li>Get satellite's latitud & longitude -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplaySat.js#L45-L101">Code</a>
+                                        </li>
+                                        <li>View satellite location endpoint -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplaySat.js#L103-L140">Code</a>
+                                        </li>
+                                        <li>LGSetting (buttons: Connect/Disconnect, Reboot, Relaunch, Poweroff) -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/Header.js#L265-L331">Code</a>
+                                        </li>
+                                        <li>Connection management functions -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/Header.js#L120-L259">Code</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Screen Visualization <span style="color: green;">[DONE]</span>
+                                    <ul>
+                                        <li>Chessboard 3D visualization</li>
+                                        <li>Chessboard Fen Load function</li>
+                                        <li>Chessboard Move Logic</li>
+                                        <li>Game Illustration</li>
+                                        <li>Camera move animation function</li> 
+                                    </ul>
+                                </li>
+                            </ul>
+                        </details>
+                    </hgroup>
+                
+                </article>
+
+                <!-- <hgroup> -->
+
+                <h3>Full Project Documentation</h3>
+                <button class="contrast" id="btn-doc">Show</button>
+                <object id="doc" style="display: none;" data="docs.pdf" type="application/pdf" width="100%"
+                    height="100%"></object>
+
+                <!-- </hgroup> -->
+
+                <article>
+                    <details close>
+                        <summary>
+                            <h3>Screenshots</h3>
+                        </summary>
+
+                        <vgroup>
+                            <h4>Controller dashboard page [Connected]</h4>
+                            <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                                    src="./Images/dashboardConn.PNG" alt="dashboard">
+                            </a><br /><br />
+
+                            <h4>Find Satellite Page</h4>
+                            <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                                    src="./Images/findsat.jpg" alt="find satellite">
+                            </a><br /><br />
+
+                            <h4>LGSetting Modal</h4>
+                            <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                                    src="./Images/lgsetting.jpg" alt="lg setting modal">
+                            </a><br /><br />
+
+                            <h4>Screens Chessboard view</h4>
+                            <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                                    src="./Images/finalview.png" alt="chessboard view">
+                            </a><br /><br />
+
+                            <h4>Screens Game Illustration</h4>
+                            <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                                    src="./Images/gameillustration.jpg" alt="illustration">
+                            </a><br /><br />
+                        </vgroup>
+
+                    </details>
+                
+                </article>
+
+                <article>
+                    <hgroup>
+                        <h3>Important Links</h3>
+                        <h4 style="margin-top: 1rem;">• GitHub</h4>
+                        <ul style="margin-top: 1rem;">
+                            <li>Controller: <a target="_blank"
+                                    href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA">GitHub Repo</a> </li>
+                            <li>Cloud Functions: <a target="_blank"
+                                    href="https://github.com/PabloSanchi/CloudFunctions">GitHub Repo</a> </li>
+                            <li>Screens: <a target="_blank"
+                                    href="https://github.com/PabloSanchi/SpaceChessScreens">GitHub Repo</a> </li>
+                            <li>ThreeJS for Liquid Galaxy Cluster Template: 
+                                <a target="_blank" 
+                                href="https://github.com/PabloSanchi/3D-Visualization-Template-Liquid-Galaxy">
+                                    GitHub Repo Template
+                                </a> 
+                            </li>
+                        </ul>
+                        <h4 style="margin-top: 1rem;">• Try it out</h4>
+                        <ul style="margin-top: 1rem;">
+                            <li>Web Cotroller: <a target="_blank" href="https://lg-space-chess-pwa.vercel.app/">LG Space
+                                    Chess</a> </li>
+                            <li>Android Controller: <a target="_blank"
+                                    href="https://play.google.com/store/apps/details?id=app.vercel.lg_space_chess_pwa.twa&hl=es">Download</a>
+                            </li>
+                        </ul>
+                        
+                        <br/><br/>
+
+                        <h6>
+                            LG Space Chess is totally new.<br/>
+                            Designed and Developed in 2022. <br/>
+                            Every single contribution is explained in the source code.
+                        </h6> 
+                    </hgroup>
+                </article>
+
+                <article>
+                    <hgroup>
+                        <h3>3D rendering template code for the Liquid Galaxy Cluster</h3>
+                        <p>
+                            I have developed a code template for other/future contributors.
+                            Here you will find the boilerplate code to render any other
+                            3D visualization/game in the Liquid Galaxy Screens.
+                            <br/><br/>
+                            The template contains:
+                            <ul>
+                                <li>Server Initialization (Server + SocketIO)</li>
+                                <li>Server screen's setup (Generate super-resolution)</li>
+                                <li>Screen's setup (Visualization setup)</li>
+                                <li>Working example with mouse events</li>
+                            </ul>
+                        </p>
+                        
+                        <h4>Explanation</h4>
+                        <p>
+                            In order to create the visualization, we need to set/follow a screen
+                            distribution. We have used the following:
+                            <br/><br/>
+                            <img style="margin: auto; "  src="./Images/screenOrder.png" alt="screen order" />
+
+                            <br/>
+                            As you can see, the center screen is the master (1). On the left, you find the odd
+                            screens; on the right, you find the even screens.
+                            So the basic schema is: <code>(...7, 5, 3, MASTER, 2, 4, 6...)</code>
+                            <br/><br/>
+                            <h5>Server Side</h5>
+                            
+                            What we need to do first is to create an express application.
+                            With <code>use</code> we tell the express application to use the 
+                            <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">cors</a>
+                            module. We will need this if we want to connect from another page not hosted by this server.
+                            
+                            <br/><br/>
+                            The second step is to create a Socket-HTTP server that starts with the express app config,
+                            and again we treat the <code>cors</code> and more config related to it.
+                            <br/><br/>
+
+                            <pre>
+
+var app = express();
+app.use(cors());
+var http = httpImport.createServer(app);
+
+var io = new Server(http, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST'],
+    },
+    handlePreflightRequest: (req, res) => {
+        const headers = {
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            'Access-Control-Allow-Origin': req.headers.origin,
+            'Access-Control-Allow-Credentials': true,
+        };
+        res.writeHead(200, headers);
+        res.end();
+    }
+});
+                            </pre> 
+
+                            Now we must define how are we going to deal with the solution.
+                            We must identify each screen, obtain its dimensions, and when all the screens are
+                            connected we will have all the needed data (individual data and super-resolution).
+
+                            <br/><br/>
+
+                            When all the screens are connected we send the start signal with some data such as 
+                            the super-resolution value and its child value (each screen resolution). 
+                            "<small>Super resolution is the resolution created when we join all the screens in one</small>"
+
+                            <br/><br/>
+
+                            How do we exchange data between the screens and the server? The answer is "Web Sockets".
+
+                            With web sockets, we can emit and listen to events. so when a screen connects to the server there is an event called 
+                            "Connect", then the server sends an event to the screen sending the screen number (the server identifies the screen).
+
+                            The screen response is to give its width to the server. The server needs it to create the super-resolution.
+                            If all the screens are already identified then the server sends the start event to all the screens.
+                            That is where the data division takes place.
+
+                            <br/><br/>
+                            <h5>Screen Side</h5>
+                            We are using <a target="_blank" href="https://threejs.org/">ThreeJS</a>
+                            for the 3D visualization. ThreeJS is a cross-browser JavaScript library and application programming interface (API)
+                            used to create and display animated 3D computer graphics in a web browser using WebGL.
+                            <br/><br/>
+
+                            How can we divide the data between the screen?<br/>
+                            The solution might appear to be long and complicated but it is not.
+                            ThreeJS has a <code>setViewOffset</code> method.
+                            <br/><br/>
+                            
+                            <code>.setViewOffset ( fullWidth, fullHeight, x, y, width, height )</code><br/>
+                            
+                            fullWidth — Super-resolution width<br/>
+                            fullHeight — Super-resolution height<br/>
+                            x — Horizontal offset of subcamera<br/>
+                            y — Vertical offset of subcamera<br/>
+                            width — width of the screen/canvas<br/>
+                            height — height of the screen/canvas<br/>
+
+                            <br/><br/>
+                            <h5>Data division function</h5>
+                            <pre>                         
+function View( canvas, fullWidth, fullHeight, viewX, viewY, viewWidth, viewHeight ) {
+    canvas.width = viewWidth * window.devicePixelRatio;
+    canvas.height = viewHeight * window.devicePixelRatio;
+    
+    const context = canvas.getContext("2d");
+    
+    // set perspective camera (you can also check the ortographic camera)
+    camera = new THREE.PerspectiveCamera(20, viewWidth / viewHeight, 1, 10000);
+    
+    // set camera offset
+    camera.setViewOffset(fullWidth, fullHeight, viewX, viewY, viewWidth, viewHeight);
+    
+    // camera default position
+    camera.position.z = 1000; // default camera z index pos
+    
+    // override render function
+    this.render = function () {
+        // mouse event
+        camera.position.x += ( mouseX - camera.position.x ) * 0.05;
+        camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
+    
+        renderer.setViewport(0, fullHeight - viewHeight, viewWidth, viewHeight);
+        renderer.render(scene, camera);
+    
+        context.drawImage(renderer.domElement, 0, 0);
+    };
+}
+                            </pre>
+                            <h5>Main setup</h5>
+                            <pre>
+function init() {
+
+    // Do not modify the following two lines of code
+    const canvas1 = document.getElementById("canvas1");
+    views.push(new View(canvas1, fullWidth, fullHeight, startX, 0, canvas1.clientWidth, canvas1.clientHeight));
+    
+    // ***********************************************************
+    // ***********************************************************
+    // YOUR CODE GOES HERE - Example in the template
+    // ***********************************************************
+    // ***********************************************************
+    
+    // do not modify the following 3 lines of code
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(fullWidth, fullHeight);
+    
+}
+                            </pre>
+                        </p>
+                    </hgroup>
+                </article> 
+
+                <article>
+                    <hgroup>
+                        <h3>Conclusion</h3>
+                        <p>
+                            Google summer of code is a great opportunity to contribute to the open source community.
+                            I am so grateful to have had the chance to develop the first chess in the world that uses
+                            satellite communications.
+
+                            ADD LINKED IN and GITHUB
+                        </p>
+                    </hgroup>
+                </article>
+
+
+                <!-- A button of show documentation works fine -->
+                <!-- <section style="width:100%; height:100%;">
+                    <details open style="width:100%; height:100%;">
+                        <summary>
+                            <h3>Full Project Documentation</h3>
+                        </summary>
+
+                        <object data="docs.pdf" type="application/pdf" width="100%" height="100%"></object>
+                    </details>
+                </section> -->
+
+            </section>
+
+
+
+            <!-- <aside>
+                <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                        src="https://source.unsplash.com/T5nXYXCf50I/1500x750" alt="Architecture"></a>
+                <p>
+                    <a href="#" onclick="event.preventDefault()">Donec sit amet</a><br>
+                    <small>Class aptent taciti sociosqu ad litora torquent per conubia nostra</small>
+                </p>
+                <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                        src="https://source.unsplash.com/tb4heMa-ZRo/1500x750" alt="Architecture"></a>
+                <p>
+                    <a href="#" onclick="event.preventDefault()">Suspendisse potenti</a><br>
+                    <small>Proin non condimentum tortor. Donec in feugiat sapien.</small>
+                </p>
+                <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                        src="https://source.unsplash.com/Ru3Ap8TNcsk/1500x750" alt="Architecture"></a>
+                <p>
+                    <a href="#" onclick="event.preventDefault()">Nullam lobortis placerat aliquam</a><br>
+                    <small>Maecenas vitae nibh blandit dolor commodo egestas vel eget neque. Praesent semper justo orci,
+                        vel imperdiet mi auctor in.</small>
+                </p>
+            </aside> -->
+
+        </div>
+    </main>
+    <!-- ./ Main -->
+
+    <!-- Footer -->
+    <!-- <footer class="container-fluid">
+        <small>Pablo Sanchidrian Google Summer of Code 2022</small>
+    </footer> -->
+    <!-- ./ Footer -->
+
+    <!-- Minimal theme switcher -->
+    <script src="minimal-theme-switcher.js"></script>
+    <!-- customization -->
+    <script src="app.js"></script>
+
+</body>
+
+</html>
