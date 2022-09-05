@@ -176,7 +176,7 @@
                             - Second Case:<br/>
                             • The cloud functions get the most voted move, create the package, and send it to the ground station<br/>
                             • The ground station sends the package to the satellite.<br/>
-                            • The satellite process the package and updates its chess engine with the Earth move<br/>
+                            • The satellite process the package and updates its chess engine with the Earth's move<br/>
                         </p>
 
                             <img style="margin: 1rem;" src="./Images/workflow.png" alt="workflow">
@@ -246,11 +246,21 @@
                                 </li>
                                 <li>Screen Visualization <span style="color: green;">[DONE]</span>
                                     <ul>
-                                        <li>Chessboard 3D visualization</li>
-                                        <li>Chessboard Fen Load function</li>
-                                        <li>Chessboard Move Logic</li>
-                                        <li>Game Illustration</li>
-                                        <li>Camera move animation function</li> 
+                                        <li>Chessboard 3D visualization -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L454-L515">Code</a>
+                                        </li>
+                                        <li>Chessboard Fen Load function -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L694-L789">Code</a>
+                                        </li>
+                                        <li>Chessboard Move Logic -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L609-L656">Code</a>
+                                        </li>
+                                        <li>Game Illustration -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L518-L574">Code</a>
+                                        </li>
+                                        <li>Camera move animation function -
+                                            <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L324-L358">Example Code</a>
+                                        </li> 
                                     </ul>
                                 </li>
                             </ul>
@@ -411,7 +421,7 @@ var io = new Server(http, {
 
                             When all the screens are connected we send the start signal with some data such as 
                             the super-resolution value and its child value (each screen resolution). 
-                            "<small>Super resolution is the resolution created when we join all the screens in one</small>"
+                            "<small>Super-resolution is the resolution created when we join all the screens in one</small>"
 
                             <br/><br/>
 
@@ -493,7 +503,7 @@ socket.on("start", (superRes) => {
 });
                             </pre>
 
-                            <br/>
+                            
                             <h5>Data division function</h5>
                             <pre>                         
 function View( canvas, fullWidth, fullHeight, viewX, viewY, viewWidth, viewHeight ) {
@@ -554,9 +564,18 @@ function init() {
                         <h3>Conclusion</h3>
                         <p>
                             Google summer of code is a great opportunity to contribute to the open source community.
-                            I am so grateful to have had the chance to develop the first chess in the world that uses
-                            satellite communications.
-                            <br/><br/>
+                            Developing the first chess in the world that uses
+                            satellite communications is such a great way to improve the coding skills.<br/>
+                            Where I learnt/improved:<br/>
+                            • Build complex M2M eviroments<br/>
+                            • Cloud computing<br/>
+                            • SFTP Servers<br/>
+                            • ReactJS skills<br/>
+
+                            <br/>
+                            <h4>Contact info</h4>
+
+
 
                             <a target="_blank" href="https://www.linkedin.com/in/pablosanchidrian/">
                                 <inline>
@@ -581,6 +600,10 @@ function init() {
                         </p>
                     </hgroup>
                 </article>
+
+                <footer>
+                    Pablo Sanchidrian Google Summer of Code 2022 Report.
+                </footer> 
 
 
             </section>
