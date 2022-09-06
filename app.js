@@ -7,7 +7,8 @@ btn.addEventListener("click", (e) => {
   if (doc.style.display == "none") {
     doc.style.display = "block";
     doc.style.width = "100%";
-    doc.style.height = "19%";
+    // doc.style.height = "100%";
+    doc.style.maxHeight = "1250px";
     doc.style.padding = "2rem";
     btn.innerHTML = "Hide";
   } else {
