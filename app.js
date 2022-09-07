@@ -1,6 +1,7 @@
 const $ = (name) => document.querySelector(name);
 btn = $("#btn-doc");
 doc = $("#doc");
+notMobile = $("#notMobile");
 
 btn.addEventListener("click", (e) => {
   e.preventDefault();
