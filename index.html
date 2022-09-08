@@ -174,108 +174,149 @@
                         </p>
                     </hgroup>
                     <br/>
+                
                     <hgroup>
-                        <!-- <h3>Project Goals</h3> -->
-                        <details open>
-                            <summary>
-                                <h3>Project Goals</h3>
-                            </summary>
-                            <ul>
-                                <li>Cloud Functions <strong><span style="color: green;">[DONE]</span></strong>
-                                    <ul>
-                                        <li>Connection with the ground station, SFTP - 
-                                            <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L148-L166">Example Code</a>
-                                        </li>
-                                        <li>Create "sendStatus" function - 
-                                            <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L28-L31">Code</a>
-                                        </li>
-                                        <li>Create player's move packet - 
-                                            <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L271-L296">Code</a>
-                                        </li>
-                                        <li>Create "getStatus" function - 
-                                            <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L174-L213">Code</a>
-                                        </li>
-                                        <li>Create binary to FEN converter function - 
-                                           <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L302-L334">Code</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                        <h3>What work was done? - Description</h3>
+                        <p>
+                            LG Space Chess was born this year (2022) so every single line of code referring to this project is new.<br/>
+                            LG Space chess as explained before is divided into three subprojects:<br/>
+                            • Cloud Functions<br/>
+                            • Web/Android Controller<br/>
+                            • Screen visualization for the Liquid Galaxy Cluster<br/>
 
-                                <li>Controller <strong><span style="color: green;">[DONE]</span></strong>
-                                    <ul>
-                                        <li>Firebase Auth -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/firebase.js#L34-L54">Code</a>
-                                        </li>
-                                        <li>Voting system -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L630-L659">Code</a>
-                                        </li>
-                                        <li>"Satellite" game-mode -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L565-L664">Code</a>
-                                        </li>
-                                        <li>"Local Play" game-mode -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L428-L563">Code</a>
-                                        </li>
-                                        <li>"Top play" reproducer -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L237-L363">Code</a>
-                                        </li>
-                                        <li>Get satellite's latitude & longitude -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplaySat.js#L45-L101">Code</a>
-                                        </li>
-                                        <li>View satellite location endpoint -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplaySat.js#L103-L140">Code</a>
-                                        </li>
-                                        <li>LGSetting (buttons: Connect/Disconnect, Reboot, Relaunch, Poweroff) -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/Header.js#L265-L331">Code</a>
-                                        </li>
-                                        <li>Connection management functions -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/Header.js#L120-L259">Code</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>Screen Visualization <strong><span style="color: green;">[DONE]</span></strong>
-                                    <ul>
-                                        <li>Chessboard 3D visualization -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L454-L515">Code</a>
-                                        </li>
-                                        <li>Chessboard Fen Load function -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L694-L789">Code</a>
-                                        </li>
-                                        <li>Chessboard Move Logic -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L609-L656">Code</a>
-                                        </li>
-                                        <li>Game Illustration -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L518-L574">Code</a>
-                                        </li>
-                                        <li>Camera move animation function -
-                                            <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L324-L358">Example Code</a>
-                                        </li> 
-                                    </ul>
-                                </li>
-                            </ul>
+                            <h5>• Cloud Functions</h5>
+                            These scheduled cloud functions run every certain amount of time and are responsible for the
+                            connection with the ground station and keep the database updated.
 
                             <br/><br/>
+                            There are two cloud functions:<br/>
+                            - The first one fetches the package the satellite left in the ground station. If there is a package, take it, 
+                            processes it, and update the database with its content. If there is no package the function aborts the operation.
 
-                            <h6>
-                                LG Space Chess is totally new.<br/>
-                                Designed and Developed in 2022. <br/>
-                                Every single contribution is explained in the source code.
-                            </h6> 
+                            <br/><br/>
+                            - The second one fetches all the players' votes and takes the most votes.
+                            with the most voted move create a package that will be sent to the ground station
+                            if there are no votes the cloud function will vote instead of the players using a chess engine.
+
+                            <h5>• Controller</h5>
+                            The controller will be the app that the users will use to play against the satellite,
+                            local machine or reproduce chess master's plays, as well as get the current location of the
+                            satellite (map visualization).
+
+                            <h5>• Screen visualization</h5>
+                            3D visualization of the current chess play. Every user with the controller will be able to
+                            connect to the screens. Instantly its chessboard status will be displayed on the screens, and every single
+                            move or change they make will be reflected on the screens. 
+                            The user can also view an illustration of how this game works, where he can visualize
+                            the exchange of data between the ground station and the satellite.
+                        </p> 
+                    </hgroup>
+                    <br/>
+                
+                    <hgroup>
+                        <!-- <h3>Project Goals</h3> -->
+                        <h3>What work was done? - Project Goals and Code</h3>
                         
-                        </details>
+                        <ul>
+                            <li>Cloud Functions <strong><span style="color: green;">[DONE]</span></strong>
+                                <ul>
+                                    <li>Connection with the ground station, SFTP - 
+                                        <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L148-L166">Example Code</a>
+                                    </li>
+                                    <li>Create "sendStatus" function - 
+                                        <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L28-L31">Code</a>
+                                    </li>
+                                    <li>Create player's move packet - 
+                                        <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L271-L296">Code</a>
+                                    </li>
+                                    <li>Create "getStatus" function - 
+                                        <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L174-L213">Code</a>
+                                    </li>
+                                    <li>Create binary to FEN converter function - 
+                                        <a target="_blank" href="https://github.com/PabloSanchi/CloudFunctions/blob/b6740814499b6ba93994ef27e50919f871e61a4d/index.js#L302-L334">Code</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>Controller <strong><span style="color: green;">[DONE]</span></strong>
+                                <ul>
+                                    <li>Firebase Auth -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/firebase.js#L34-L54">Code</a>
+                                    </li>
+                                    <li>Voting system -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L630-L659">Code</a>
+                                    </li>
+                                    <li>"Satellite" game-mode -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L565-L664">Code</a>
+                                    </li>
+                                    <li>"Local Play" game-mode -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L428-L563">Code</a>
+                                    </li>
+                                    <li>"Top play" reproducer -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplayChess.js#L237-L363">Code</a>
+                                    </li>
+                                    <li>Get satellite's latitude & longitude -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplaySat.js#L45-L101">Code</a>
+                                    </li>
+                                    <li>View satellite location endpoint -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/DisplaySat.js#L103-L140">Code</a>
+                                    </li>
+                                    <li>LGSetting (buttons: Connect/Disconnect, Reboot, Relaunch, Poweroff) -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/Header.js#L265-L331">Code</a>
+                                    </li>
+                                    <li>Connection management functions -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/LG-SPACE-CHESS-PWA/blob/main/components/Header.js#L120-L259">Code</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Screen Visualization <strong><span style="color: green;">[DONE]</span></strong>
+                                <ul>
+                                    <li>Chessboard 3D visualization -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L454-L515">Code</a>
+                                    </li>
+                                    <li>Chessboard Fen Load function -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L694-L789">Code</a>
+                                    </li>
+                                    <li>Chessboard Move Logic -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L609-L656">Code</a>
+                                    </li>
+                                    <li>Game Illustration -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L518-L574">Code</a>
+                                    </li>
+                                    <li>Camera move animation function -
+                                        <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L324-L358">Example Code</a>
+                                    </li> 
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <br/><br/>
+
+                        <h6>
+                            LG Space Chess is totally new.<br/>
+                            Designed and Developed in 2022. <br/>
+                            Every single contribution is explained in the source code.
+                        </h6> 
+                    
+                    
 
                     </hgroup>
                 
                 </article>
 
             
-                <h3>Full Project Documentation</h3>
+                <h3>Full Project Documentation - 
+                    <a target="_blank" href="https://drive.google.com/file/d/1ZZo81jVEKyQoa0imR5v5uWBVTMsRK_mH/view?usp=sharing">
+                        Link
+                    </a>
+                </h3>
                 <button class="contrast" id="btn-doc">Show</button>
                 <object id="doc" style="display: none;" data="docs.pdf" type="application/pdf" width="100%"
                     height="100%"></object>
                 <article>
                     <details close>
                         <summary>
-                            <h3>Screenshots</h3>
+                            <h3>Project Screenshots</h3>
                         </summary>
 
                         <vgroup>
@@ -368,7 +409,7 @@
                             screens; on the right, you find the even screens.
                             So the basic schema is: <code>(...7, 5, 3, MASTER, 2, 4, 6...)</code>
                             <br/><br/>
-                            <h5>Server Side</h5>
+                            <h5>• Server Side</h5>
                             
                             What we need to do first is to create an express application.
                             With <code>use</code> we tell the express application to use the 
@@ -425,7 +466,7 @@ var io = new Server(http, {
                             That is where the data division takes place.
 
                             <br/><br/>
-                            <h5>Screen Side</h5>
+                            <h5>• Screen Side</h5>
                             We are using <a target="_blank" href="https://threejs.org/">ThreeJS</a>
                             for the 3D visualization. ThreeJS is a cross-browser JavaScript library and application programming interface (API)
                             used to create and display animated 3D computer graphics in a web browser using WebGL.
@@ -447,7 +488,7 @@ var io = new Server(http, {
 
                             <br/>
 
-                            <h5>Start event (Screens)</h5>
+                            <h5>• Start event (Screens)</h5>
                             <p>
                                 The server tells the screen to set up their variables using the data they just have been provided (data explained above).
                                 They calculate its corresponding X-axis offset using the following code:
@@ -494,7 +535,7 @@ socket.on("start", (superRes) => {
                             </pre>
 
                             
-                            <h5>Data division function</h5>
+                            <h5>• Data division function</h5>
                             <pre>                         
 function View( canvas, fullWidth, fullHeight, viewX, viewY, viewWidth, viewHeight ) {
     canvas.width = viewWidth * window.devicePixelRatio;
@@ -524,7 +565,7 @@ function View( canvas, fullWidth, fullHeight, viewX, viewY, viewWidth, viewHeigh
     };
 }
                             </pre>
-                            <h5>Main setup</h5>
+                            <h5>• Main setup</h5>
                             <pre>
 function init() {
 
