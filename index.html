@@ -132,6 +132,7 @@
                     <hgroup>
                         <h3>LG Space Chess</h3>
                         <p>
+                            <br/>
                             LG Space chess is the newest way of playing chess.<br/>
                             Remote chess is played in various forms,
                             traditionally through the postal system or its updated version (email), less common methods are fax, homing pigeon, and phone.
@@ -178,6 +179,7 @@
                     <hgroup>
                         <h3>What work was done? - Description</h3>
                         <p>
+                            <br/>
                             LG Space Chess was born this year (2022) so every single line of code referring to this project is new.<br/>
                             LG Space chess as explained before is divided into three subprojects:<br/>
                             • Cloud Functions<br/>
@@ -216,7 +218,7 @@
                     <hgroup>
                         <!-- <h3>Project Goals</h3> -->
                         <h3>What work was done? - Project Goals and Code</h3>
-                        
+                        <br/>
                         <ul>
                             <li>Cloud Functions <strong><span style="color: green;">[DONE]</span></strong>
                                 <ul>
@@ -354,6 +356,7 @@
                     <hgroup>
                         <h3>3D rendering template code for the Liquid Galaxy Cluster</h3>
                         <p>
+                            <br/>
                             I have developed a code template for other/future contributors.
                             Here you will find the boilerplate code to render any other
                             3D visualization/game in the Liquid Galaxy Screens.
@@ -559,6 +562,75 @@ function init() {
                         </p>
                     </hgroup>
                 </article> 
+
+
+                <article>
+                    <hgroup>
+                        <h3>What's left to do?</h3>
+                        <p>
+                            <br/>
+                            We have accomplished our goals but there are always things that can be added.
+                            <ul>
+                                <li>Online Gamemode</li>
+                                <li>PGN format chess play loader</li>
+                            </ul>
+
+                            The "Online Gamemode" can be easily done by using the firebase real-time database.
+                            You should create a game session that contains the following:
+                            <br/>
+                            <pre>
+gamesessions: {
+    session1: {
+        UID_player1: ...,
+        UID_player2: ...,
+        Chessboard: ...,
+        Turn: ...
+    },
+    ...
+    sessionN: {
+        UID_player1: ...,
+        UID_player2: ...,
+        Chessboard: ...,
+        Turn: ...
+    }
+}
+                            </pre>
+                            <small>This is an approximation, there are multiple ways to accomplish this</small>
+                            <br/><br/>
+
+                            The "PGN format chess play loader" can be done by using the following utilities:<br/>
+                            - PGN to JSON parser: <a target="_blank" href="https://www.npmjs.com/package/chess-pgn-parser">Link</a><br/>
+                            - Use the chess.js chess engine to reproduce the chess game.
+
+                            <br/>
+                            Follow the example:
+                            <pre >
+// "moves" is the array of moves obtained using the pgn to json parser.
+// "chess" is the javascript chess engine
+// EXAMPLE: chess.move('e4') returns -> { color: 'w', from: 'e2', to: 'e4', flags: 'b', piece: 'p', san: 'e4' }
+// All you have to do now is:
+//      - Create a parser from pgnJson to long algebraic notation
+//      - Readapt the demo chess functions to take both notations.
+
+// Aproximation to the first option
+/**
+ * @param {Array} moves : array of pgn format moves. ['e4', 'a6', ...]
+ * @res {Array} res : array of long algebraic notation moves. ['E2E4', ...]
+ */
+const pgnToLongAlgebraic = (moves) => {
+    let res = [];
+    let chess = new Chess();
+    moves.forEach(el => {
+        const { from, to } = chess.move(el);
+        res.push(from.toUpperCase() + to.toUpperCase())
+    });
+
+    return res;
+}
+                            </pre>
+                        </p> 
+                    </hgroup>
+                </article>
 
                 <article>
                     <hgroup>
