@@ -77,14 +77,14 @@
                     <hgroup>
                         <h3>Intro</h3>
                         <p>
-                            The Google summer of code program has been the greatest experience for me over the summer,
-                            during which I developed the <strong>first chess in the world</strong> that uses satellite
+                            The Google summer of code program has been one of the greatest experiences of my life.
+                            During the summer I developed the <strong>first chess application in the world</strong> that uses satellite
                             communications.
                             <br />
                             The project idea was to create a space-related visualization project in collaboration with
-                            Hydra-Space & Hybridium.
-                            The target is to use the Liquid Galaxy cluster to visualize a world chess game that will happen
-                            with people worldwide and through satellite communications.
+                            Hydra-Space & Liquid Galaxy.
+                            The target is to use the Liquid Galaxy cluster to visualize a collaborative chess game.
+                            In this game humans on Earth play against a satellite AI.
                         </p>
                     </hgroup>
 
@@ -96,8 +96,8 @@
                             but has evolved to become a general data visualization tool for operations, marketing, and
                             research.<br /><br />
                             Liquid Galaxy gives the ability to fly around Google Earth, view panoramic video and photos,
-                            develop interactive tours, and graphically display geographic information data, but also nice
-                            visualizations multipurpose
+                            develop interactive tours, and graphically display geographic information data, but it is also a nice plataform
+                            for multipurpose visualizations.
 
                         </p>
                     </hgroup>
@@ -106,26 +106,26 @@
                         <h3>What is Hydra-Space? - <img style="width: 5%; height: 5%;" src="./Images/hydraspace.png" /></h3>
                         <p>
                             <a target="_blank" href="https://www.hydra-space.com/">Hydra Space</a> is an engineering company based in Madrid, 
-                            Spain dedicated to satellite IoT communications with full inhouse technology,
-                            including satellites and ground-segment.
-                            Hydra Space is a member of Madrid Innovation and New Space Cluster (MINSC)
+                            Spain dedicated to satellite IoT communications with impressive full inhouse technology.
+                            Hydra Space is a member of <span style="font-style: italic;">"Madrid Innovation and New Space Cluster"</span> (MINSC)
                         </p>
                     </hgroup>
 
                     <hgroup>
                         <h3>What is Hybridium? - <img style="width: 20%; height: 20%;" src="./Images/hybriduim.png"/></h3>
                         <p>
-                            <a target="_blank" href="https://hybridium.com/">Hybridium</a> provide all-in-one hybrid auditorium and event technology designed to overcome
-                            all kinds of challenges to deliver the most impactful events.
+                            <a target="_blank" href="https://hybridium.com/">Hybridium</a> provides an all-in-one hybrid auditorium event technology 
+                            designed to deliver the most impacful events.
                             <br/><br/>
-                            Large scale video and hologram wall,
+                            The solution features: <br/>
+                            Large scale video-wall and hologram technologies,
                             uniting participants for exceptionally immersive and engaging hybrid collaboration,
                             training and events.
                             <br/><br/>
                             Hybridium makes hybrid and distance learning a truly immersive,
                             collaborative and engaging experience, enabling organizations to extend their geographical reach.
                             Frictionless real-time high-quality video, 
-                            chat and content sharing allows students to participate as if they are in the classroom.
+                            chat and content sharing allows participants to collaborate as if they were in the same physical space.
                         </p>
                     </hgroup>
                     
@@ -135,16 +135,18 @@
                             <br/>
                             LG Space chess is the newest way of playing chess.<br/>
                             Remote chess is played in various forms,
-                            traditionally through the postal system or its updated version (email), less common methods are fax, homing pigeon, and phone.
+                            traditionally through the postal system or its updated version (email), less common methods are fax,
+                            homing pigeon, and phone.
+
                             Today it is usually played throughout a dedicated server.
                             Now, Liquid Galaxy has created the first chess in the world capable of playing against a satellite.
                             <br /><br />
-                            The main idea is that the players vote for a specific movement. The most voted movement will be the one that
-                            all the players will play against the satellite.
+                            The main idea is that the players vote for a specific movement. The most voted movement will be selected as Earth's choice
+                            to play against the satellite.
                             <br /><br />
-                            To achieve this we must have set a communication protocol so we can exchange data with the satellite.
+                            To achieve this we have set a communication protocol so we can exchange data between the ground-station and the satellite.
                             <br />
-                            Firstly, you must understand the structure of the project.
+                            Firstly, we must understand the structure of the project.
                             <br/><br/>
                             
                             • Satellite with a chess engine<br/>
@@ -158,58 +160,59 @@
                             The basic workflow is the following:<br/><br/>
 
                             - First Case:<br/>
-                            • The satellite sends the chessboard status to the ground station + its vote.<br/>
+                            • The satellite sends the chessboard status to the ground station and the movement selected by the satellite's AI.<br/>
                             • The cloud function fetch the packet from the ground station 
                                 and update the controller's database with the packet content.<br/>
                             <br/>
                             - Second Case:<br/>
-                            • The cloud functions get the most voted move, create the package, and send it to the ground station.<br/>
+                            • The cloud functions get the most voted move, create the package and send it to the ground-station.<br/>
                             • The ground station sends the package to the satellite.<br/>
-                            • The satellite process the package and updates its chess engine with the Earth's move.<br/>
+                            • The satellite processes the package and updates its chess engine with the Earth's move.<br/>
                         </p>
 
                             <img style="margin: 1rem;" src="./Images/workflow.png" alt="workflow">
                         <p>
                             LG Space chess also has two more game modes,
-                            Local Play where the user can play against the local machine, and a “Top Plays” mode where the user can reproduce chess master's plays.
+                            Local Play where the user can play against the local machine, 
+                            and a “Top Games” mode where the user can reproduce chess master's games.
                         </p>
                     </hgroup>
                     <br/>
                 
                     <hgroup>
-                        <h3>What work was done? - Description</h3>
+                        <h3>What work has been done? - Description</h3>
                         <p>
                             <br/>
-                            LG Space Chess was born this year (2022) so every single line of code referring to this project is new.<br/>
+                            LG Space Chess was born in 2022 coded by Pablo Sanchidrián.<br/>
                             LG Space chess as explained before is divided into three subprojects:<br/>
                             • Cloud Functions<br/>
                             • Web/Android Controller<br/>
                             • Screen visualization for the Liquid Galaxy Cluster<br/>
 
                             <h5>• Cloud Functions</h5>
-                            These scheduled cloud functions run every certain amount of time and are responsible for the
+                            These cloud functions run every certain amount of time and are responsible for the
                             connection with the ground station and keep the database updated.
 
                             <br/><br/>
-                            There are two cloud functions:<br/>
+                            There are the two cloud functions:<br/>
                             - The first one fetches the package the satellite left in the ground station. If there is a package, take it, 
                             processes it, and update the database with its content. If there is no package the function aborts the operation.
 
                             <br/><br/>
-                            - The second one fetches all the players' votes and takes the most votes.
-                            with the most voted move create a package that will be sent to the ground station
-                            if there are no votes the cloud function will vote instead of the players using a chess engine.
+                            - The second one fetches all the players' votes and takes the most voted.
+                            With the most voted move we create a package that will be sent to the ground station
+                            if there are no votes, the cloud function will vote automatically instead of the players using a chess engine.
 
                             <h5>• Controller</h5>
-                            The controller will be the app that the users will use to play against the satellite,
-                            local machine or reproduce chess master's plays, as well as get the current location of the
+                            The controller will be the app that the users will connect to play against the satellite,
+                            against the local machine or play back chess master's games, as well as get the current location of the
                             satellite (map visualization).
 
                             <h5>• Screen visualization</h5>
                             3D visualization of the current chess play. Every user with the controller will be able to
                             connect to the screens. Instantly its chessboard status will be displayed on the screens, and every single
                             move or change they make will be reflected on the screens. 
-                            The user can also view an illustration of how this game works, where he can visualize
+                            The user can also view an illustration of how this game works, where he can see
                             the exchange of data between the ground station and the satellite.
                         </p> 
                     </hgroup>
@@ -217,7 +220,7 @@
                 
                     <hgroup>
                         <!-- <h3>Project Goals</h3> -->
-                        <h3>What work was done? - Project Goals and Code</h3>
+                        <h3>What work has been done? - Project Goals and Code</h3>
                         <br/>
                         <ul>
                             <li>Cloud Functions <strong><span style="color: green;">[DONE]</span></strong>
@@ -276,7 +279,7 @@
                                     <li>Chessboard 3D visualization -
                                         <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L454-L515">Code</a>
                                     </li>
-                                    <li>Chessboard Fen Load function -
+                                    <li>Chessboard FEN Load function -
                                         <a target="_blank" href="https://github.com/PabloSanchi/SpaceChessScreens/blob/main/public/multiple.js#L694-L789">Code</a>
                                     </li>
                                     <li>Chessboard Move Logic -
@@ -295,9 +298,9 @@
                         <br/><br/>
 
                         <h6>
-                            LG Space Chess is totally new.<br/>
-                            Designed and Developed in 2022. <br/>
-                            Every single contribution is explained in the source code.
+                            LG Space Chess by Pablo Sanchidrián.<br/>
+                            Designed and fully developed in 2022. <br/>
+                            Every single contribution is documented in the source code.
                         </h6> 
                     
                     
@@ -332,7 +335,7 @@
                                     src="./Images/findsat.jpg" alt="find satellite">
                             </a><br /><br />
 
-                            <h4>LGSetting Modal</h4>
+                            <h4>LG Settings Modal</h4>
                             <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
                                     src="./Images/lgsetting.jpg" alt="lg setting modal">
                             </a><br /><br />
@@ -357,7 +360,7 @@
                         <h3>3D rendering template code for the Liquid Galaxy Cluster</h3>
                         <p>
                             <br/>
-                            I have developed a code template for other/future contributors.
+                            I have developed a code template for other potential current and future contributors.
                             Here you will find the boilerplate code to render any other
                             3D visualization/game in the Liquid Galaxy Screens.
                             <br/><br/>
